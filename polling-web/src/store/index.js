@@ -1,6 +1,9 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import meetingReport from "./modules/meetingReport"
+import participants from "./modules/participants"
+import reportPerParticipant from "./modules/reportPerParticipant"
+import reportMeeting from "./modules/reportMeeting"
+import reportPolling from "./modules/reportPolling"
 
 Vue.use(Vuex)
 
@@ -9,6 +12,9 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    meetingReport,
+    participants,
+    reportPerParticipant,
+    reportMeeting,
+    reportPolling,
   },
 })

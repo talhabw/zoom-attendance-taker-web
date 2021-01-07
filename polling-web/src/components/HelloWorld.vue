@@ -1,141 +1,106 @@
 <template>
   <v-container>
-    <v-row class="text-center">
+    <v-row>
       <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
+        <v-card
+          style="line-height: 33px; background-color: pink;"
+          class="text-center py-3"
+          elevation="24"
+          shaped
+        >
+          <v-container>
+            <v-row class="blue--text font-weight-bold">
+              <v-col cols="1">
+                STATUS
+              </v-col>
+              <v-col cols="3">
+                DURATION
+              </v-col>
+              <v-col cols="4">
+                TOPIC
+              </v-col>
+              <v-col cols="2">
+                HOST
+              </v-col>
+              <v-spacer />
+            </v-row>
+            <hr class="my-3" color="purple" />
+            <v-row>
+              <v-col cols="1" class="red--text text-h5 font-weight-bold">
+                LIVE
+              </v-col>
+              <v-col cols="3" class="green--text text--darken-2">
+                for 27 Minute and 35 Seconds
+              </v-col>
+              <v-col>
+                Bora Cetkin's meeting
+              </v-col>
+              <v-col cols="2">
+                Bora Cetkin
+              </v-col>
+              <v-col cols="2">
+                <v-btn>
+                  details
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-card>
       </v-col>
+    </v-row>
 
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank"
-            >Discord Community</a
-          >
-        </p>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-card>
+          <v-card-title style="background-color: pink;">
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="Search"
+              single-line
+              hide-details
+            ></v-text-field>
+          </v-card-title>
+          <v-data-table
+            style="background-color: pink;"
+            :headers="createHeaders(allParticipants[0])"
+            :items="allParticipants"
+            :search="search"
+          ></v-data-table>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
   name: "HelloWorld",
 
   data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
-      }
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com"
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com"
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify"
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs"
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify"
-      }
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer"
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/getting-started/pre-made-layouts"
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
-      }
-    ]
-  })
-};
+    search: "",
+  }),
+  methods: {
+    createHeaders(obj) {
+      obj = Object.keys(obj)
+      obj.shift()
+      return [
+        {
+          text: "Name",
+          align: "start",
+          filterable: false,
+          value: obj[0],
+        },
+        { text: "Class", value: obj[1] },
+        { text: "Number", value: obj[2] },
+        { text: "Join Time", value: obj[3] },
+      ]
+    },
+  },
+  computed: {
+    ...mapGetters(["allParticipants"]),
+  },
+}
 </script>
