@@ -27,7 +27,7 @@ const state = {
 }
 
 const getters = {
-  allParticipants: (state) => state.participants,
+  getParticipants: (state) => state.participants,
 }
 
 const actions = {

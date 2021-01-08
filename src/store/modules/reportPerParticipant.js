@@ -5,7 +5,7 @@ const state = {
 }
 
 const getters = {
-  allReportsPerParticipant: (state) => state.reportPerParticipant,
+  getReportsPerParticipant: (state) => state.reportPerParticipant,
 }
 
 const actions = {
