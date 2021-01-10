@@ -24,9 +24,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
-      <HelloWorld />
-    </v-main>
+    <HelloWorld />
   </v-app>
 </template>
 
