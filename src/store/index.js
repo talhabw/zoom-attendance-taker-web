@@ -35,7 +35,7 @@ export default new Vuex.Store({
   actions: {
     async fetchMeetings({ commit }) {
       let response = await axios.get(
-        "https://zoom-polling.herokuapp.com/:3000/meetings"
+        "https://zoom-polling.herokuapp.com/meetings"
       )
       /* response.data.forEach((meeting) => {
       if (!meeting.end_time) {
