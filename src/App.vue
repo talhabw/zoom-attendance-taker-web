@@ -24,18 +24,18 @@
       </v-btn>
     </v-app-bar>
 
-    <HelloWorld />
+    <Meetings />
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld"
+import Meetings from "./components/Meetings"
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
+    Meetings,
   },
 
   data: () => ({
