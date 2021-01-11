@@ -49,16 +49,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      "getLoading",
-      "getMeetings",
-      "getParticipants",
-      "getReportPolling",
-    ]),
+    ...mapGetters(["getMeetings"]),
   },
   created() {
     this.fetchMeetings()
-    this.fetchParticipants()
   },
 }
 </script>
