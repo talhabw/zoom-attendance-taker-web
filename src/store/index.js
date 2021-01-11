@@ -37,21 +37,6 @@ export default new Vuex.Store({
       let response = await axios.get(
         "https://zoom-polling.herokuapp.com/meetings"
       )
-      /* response.data.forEach((meeting) => {
-      if (!meeting.end_time) {
-        meeting.duration = Math.floor(
-          timeDiff(
-            meeting.start_time,
-            new Date(new Date().toLocaleString("en")).toISOString()
-          )
-        )
-      }
-
-      meeting.start_time = formatDate(meeting.start_time)
-      if (meeting.end_time) {
-        meeting.end_time = formatDate(meeting.end_time)
-      }
-    }) */
 
       commit("setMeetings", response.data)
     },
@@ -66,7 +51,6 @@ export default new Vuex.Store({
       })
 
       commit("setParticipants", response.data)
-      state.loading = false
     },
     async fetchReportPolling({ commit, state }, meetingId) {
       state.loading = true
@@ -79,15 +63,18 @@ export default new Vuex.Store({
       formatLoop(response.data.declined_members)
 
       commit("setReportPolling", response.data)
-      state.loading = false
     },
   },
   mutations: {
     setMeetings: (state, meetings) => (state.meetings = meetings),
-    setParticipants: (state, participants) =>
-      (state.participants = participants),
-    setReportPolling: (state, reportPolling) =>
-      (state.reportPolling = reportPolling),
+    setParticipants: (state, participants) => {
+      state.participants = participants
+      state.loading = false
+    },
+    setReportPolling: (state, reportPolling) => {
+      state.reportPolling = reportPolling
+      state.loading = false
+    },
   },
   modules: {},
 })
