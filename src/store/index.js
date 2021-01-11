@@ -62,7 +62,6 @@ export default new Vuex.Store({
       })
 
       commit("setParticipants", response.data)
-      state.loading = false
     },
     async fetchReportPolling({ commit, state }, meetingId) {
       state.loading = true
@@ -75,15 +74,18 @@ export default new Vuex.Store({
       formatLoop(response.data.declined_members)
 
       commit("setReportPolling", response.data)
-      state.loading = false
     },
   },
   mutations: {
     setMeetings: (state, meetings) => (state.meetings = meetings),
-    setParticipants: (state, participants) =>
-      (state.participants = participants),
-    setReportPolling: (state, reportPolling) =>
-      (state.reportPolling = reportPolling),
+    setParticipants: (state, participants) => {
+      state.participants = participants
+      state.loading = false
+    },
+    setReportPolling: (state, reportPolling) => {
+      state.reportPolling = reportPolling
+      state.loading = false
+    },
   },
   modules: {},
 })
