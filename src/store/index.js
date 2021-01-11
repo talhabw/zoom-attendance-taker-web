@@ -34,13 +34,17 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchMeetings({ commit }) {
-      let response = await axios.get("http://localhost:3000/meetings")
+      let response = await axios.get(
+        "https://zoom-polling.herokuapp.com/meetings"
+      )
 
       commit("setMeetings", response.data)
     },
     async fetchParticipants({ commit, state }) {
       state.loading = true
-      let response = await axios.get(`http://localhost:3000/participants`)
+      let response = await axios.get(
+        `https://zoom-polling.herokuapp.com/participants`
+      )
 
       response.data.forEach((participant) => {
         participant.join_time = formatDate(participant.join_time)
@@ -51,7 +55,7 @@ export default new Vuex.Store({
     async fetchReportPolling({ commit, state }, meetingId) {
       state.loading = true
       let response = await axios.get(
-        `http://localhost:3000/reportPolling/${meetingId}`
+        `https://zoom-polling.herokuapp.com/reportPolling/${meetingId}`
       )
 
       formatLoop(response.data.members)
