@@ -35,21 +35,6 @@ export default new Vuex.Store({
   actions: {
     async fetchMeetings({ commit }) {
       let response = await axios.get("http://localhost:3000/meetings")
-      /* response.data.forEach((meeting) => {
-      if (!meeting.end_time) {
-        meeting.duration = Math.floor(
-          timeDiff(
-            meeting.start_time,
-            new Date(new Date().toLocaleString("en")).toISOString()
-          )
-        )
-      }
-
-      meeting.start_time = formatDate(meeting.start_time)
-      if (meeting.end_time) {
-        meeting.end_time = formatDate(meeting.end_time)
-      }
-    }) */
 
       commit("setMeetings", response.data)
     },
