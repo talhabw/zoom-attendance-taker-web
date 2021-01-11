@@ -1,26 +1,37 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
+    <v-app-bar app color="primary" dark height="75">
+      <div class="d-flex align-center ">
         <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
+          alt="EALRobotik Logo"
+          class="shrink"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          src="./assets/logo.png"
           transition="scale-transition"
-          width="40"
+          width="130"
         />
       </div>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        class="mr-3"
+        href="https://github.com/TalhaK15/ealrobotik-yoklama-api"
         target="_blank"
         text
+        outlined
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <span class="mr-2">API</span>
+        <v-icon>mdi-github</v-icon>
+      </v-btn>
+      <v-btn
+        href="https://github.com/TalhaK15/ealrobotik-yoklama-web"
+        target="_blank"
+        text
+        outlined
+      >
+        <span class="mr-2">WEB</span>
+        <v-icon>mdi-github</v-icon>
       </v-btn>
     </v-app-bar>
 
