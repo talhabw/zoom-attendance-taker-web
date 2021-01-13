@@ -38,10 +38,12 @@
                 :search="search"
                 :single-expand="singleExpand"
                 :expanded.sync="expanded"
-                item-key="user_number"
-                show-expand
+                :show-expand="meeting.end_time"
               >
-                <template v-slot:expanded-item="{ headers, item }">
+                <template
+                  v-if="meeting.end_time"
+                  v-slot:expanded-item="{ headers, item }"
+                >
                   <td :colspan="headers.length">
                     <span
                       class="my-10 d-block"
@@ -83,14 +85,11 @@ export default {
       obj = Object.keys(obj[0])
       return [
         {
-          text: "Name",
+          text: "User Name",
           align: "start",
           value: obj[1],
         },
-        { text: "Number", value: obj[2] },
-        { text: "Class", value: obj[3] },
-        { text: "Join Time", value: obj[4] },
-        { text: "Actions", value: "data-table-expand" },
+        { text: "Join Time", value: obj[2] },
       ]
     },
     createEndedHeaders(obj) {
