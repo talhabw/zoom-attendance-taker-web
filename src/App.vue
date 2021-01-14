@@ -49,8 +49,6 @@ export default {
     Meetings,
   },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({}),
 }
 </script>

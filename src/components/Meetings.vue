@@ -32,10 +32,7 @@ import { mapActions, mapGetters } from "vuex"
 export default {
   name: "Meetings",
 
-  data: () => ({
-    loading: true,
-    nowDate: new Date(new Date().toLocaleString("en")).toISOString(),
-  }),
+  data: () => ({}),
   components: {
     Meeting,
     MeetingDetails,

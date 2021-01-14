@@ -35,8 +35,5 @@ export default {
       })
     },
   },
-  created() {
-    //console.log(this.meeting)
-  },
 }
 </script>
