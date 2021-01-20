@@ -87,9 +87,9 @@ export default {
         {
           text: "User Name",
           align: "start",
-          value: obj[1],
+          value: obj[obj.indexOf("user_name")],
         },
-        { text: "Join Time", value: obj[2] },
+        { text: "Join Time", value: obj[obj.indexOf("join_time")] },
       ]
     },
     createEndedHeaders(obj) {
@@ -98,12 +98,12 @@ export default {
         {
           text: "Name",
           align: "start",
-          value: obj[1],
+          value: obj[obj.indexOf("user_name")],
         },
-        { text: "Number", value: obj[2] },
-        { text: "Class", value: obj[3] },
-        { text: "Duration", value: obj[5] },
-        { text: "Here", value: obj[6] },
+        { text: "Number", value: obj[obj.indexOf("user_number")] },
+        { text: "Class", value: obj[obj.indexOf("user_class")] },
+        { text: "Duration", value: obj[obj.indexOf("attendDuration")] },
+        { text: "Here", value: obj[obj.indexOf("here")] },
         { text: "Actions", value: "data-table-expand" },
       ]
     },
