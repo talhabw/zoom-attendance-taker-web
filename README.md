@@ -1,24 +1,5 @@
-# EAL Robotik klubunun zoom derslerinde yoklama almak icin kurulmus sistemin web kismi
+# Zoom Auto Attendance Taker
 
-## Project setup
-```
-npm install
-```
+ A web app to take auto attendance at online classes. You give the list of members to app, and install it's zoom extension to your account. It handles the rest, to give you detailed informations about: who joined to which classs, how many mintues did he/she stay in the meeting, etc.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+**Note:** *I developed  this project for my school's robotics club. It is not available to public use at the moment. I will continue to develop it when I have enough time to make it a public app.*
